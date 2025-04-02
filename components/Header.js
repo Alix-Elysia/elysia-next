@@ -3,7 +3,18 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header style={{ padding: '10px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#cfc6b8' }}>
+    <header
+      style={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 100,
+        padding: '10px 40px',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        backgroundColor: '#cfc6b8',
+      }}
+    >
       <Link href="/">
         <Image
           src="/logo-elysia.png"

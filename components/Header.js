@@ -8,12 +8,12 @@ export default function Header() {
         <Image
           src="/logo-elysia.png"
           alt="Logo Élysia"
-          width={120}
-          height={60}
+          width={100}
+          height={50}
           priority
         />
       </Link>
-      <nav style={{ display: 'flex', gap: '20px', fontWeight: '500' }}>
+      <nav style={{ display: 'flex', gap: '20px', fontWeight: '500', fontSize: '0.95rem' }}>
         <Link href="/">Accueil</Link>
         <Link href="/a-propos">À propos</Link>
         <Link href="/sanctuaire">Sanctuaire</Link>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="flex items-center justify-between p-4 bg-[#fdfaf6] shadow-md">
+    <header style={{ padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
       <Link href="/">
         <Image
           src="/logo-elysia.png"
@@ -13,7 +13,7 @@ export default function Header() {
           priority
         />
       </Link>
-      <nav className="flex gap-6 text-[#221f20] font-medium">
+      <nav style={{ display: 'flex', gap: '20px', fontWeight: '500' }}>
         <Link href="/">Accueil</Link>
         <Link href="/a-propos">À propos</Link>
         <Link href="/sanctuaire">Sanctuaire</Link>

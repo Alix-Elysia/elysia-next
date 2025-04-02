@@ -19,4 +19,36 @@ export default function Inscription() {
           name="name"
           placeholder="Votre prénom"
           required
-          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8
+          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
+        />
+        <input
+          type="email"
+          name="email"
+          placeholder="Votre email"
+          required
+          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
+        />
+        <input
+          type="password"
+          name="password"
+          placeholder="Votre mot de passe"
+          required
+          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
+        />
+        <button
+          type="submit"
+          style={{
+            backgroundColor: '#6f442e',
+            color: '#fff',
+            padding: '12px 24px',
+            borderRadius: '8px',
+            border: 'none',
+            cursor: 'pointer',
+          }}
+        >
+          Créer mon espace
+        </button>
+      </form>
+    </motion.section>
+  );
+}

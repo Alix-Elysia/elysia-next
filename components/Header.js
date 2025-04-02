@@ -3,13 +3,13 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header style={{ padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+    <header style={{ padding: '10px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', backgroundColor: '#cfc6b8' }}>
       <Link href="/">
         <Image
           src="/logo-elysia.png"
           alt="Logo Élysia"
-          width={140}
-          height={70}
+          width={120}
+          height={60}
           priority
         />
       </Link>

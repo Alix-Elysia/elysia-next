@@ -9,7 +9,7 @@ export default function Header() {
           src="/logo-elysia.png"
           alt="Logo Élysia"
           width={120}
-          height={60}
+          height={120}
           priority
         />
       </Link>

@@ -24,7 +24,7 @@ export default function APropos() {
               className="overflow-hidden rounded-2xl shadow-lg"
             >
               <Image
-                src={`/images/${img}`}
+                src={`/images/${img}`} // Veuillez vous assurer que les images sont placées dans /public/images/
                 alt={`Ambiance ${index + 1}`}
                 width={500}
                 height={350}

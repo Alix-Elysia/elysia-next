@@ -1,63 +1,61 @@
-import NextAuth from 'next-auth';
-import CredentialsProvider from 'next-auth/providers/credentials';
+import NextAuth from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
+import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt'
 
-// Exemple de pseudo-base de données en mémoire (pour la démo)
-// Plus tard, on remplacera par une vraie DB (PostgreSQL, etc.)
-const users = [
-  {
-    id: '1',
-    email: 'test@elysia.fr',
-    password: 'secret', // en clair pour la démo, à ne jamais faire en prod
-  },
-];
+const prisma = new PrismaClient()
 
 export default NextAuth({
+  adapter: PrismaAdapter(prisma), // on branche la base PostgreSQL via Prisma
   session: {
-    strategy: 'jwt',
+    strategy: 'jwt', // pour stocker les infos en JWT
   },
   providers: [
     CredentialsProvider({
-      name: 'Identifiants',
+      name: 'Identifiants', 
       credentials: {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Mot de passe', type: 'password' },
       },
       async authorize(credentials) {
-        // Récupération de l'email et du mot de passe
-        const { email, password } = credentials;
-
-        // Vérification dans la pseudo-base
-        const user = users.find(
-          (u) => u.email === email && u.password === password
-        );
+        // On recherche l'utilisateur dans la base via Prisma
+        const user = await prisma.user.findUnique({
+          where: { email: credentials.email },
+        })
 
         if (!user) {
-          // Pas trouvé ou mauvais mot de passe
-          throw new Error('Identifiants invalides');
+          // Pas d'utilisateur associé à cet email
+          throw new Error("Aucun compte associé à cet email")
         }
 
-        // Renvoie l'objet user si tout est ok
+        // Vérifier le mot de passe (hashé avec bcrypt)
+        const match = await bcrypt.compare(credentials.password, user.password)
+        if (!match) {
+          throw new Error('Mot de passe incorrect')
+        }
+
+        // Tout est OK, on retourne l'objet user
         return {
           id: user.id,
           email: user.email,
-        };
+          name: user.name,
+        }
       },
     }),
   ],
   callbacks: {
     async jwt({ token, user }) {
-      // Si l'utilisateur est défini, on l'ajoute au token
       if (user) {
-        token.id = user.id;
+        token.user = user
       }
-      return token;
+      return token
     },
     async session({ session, token }) {
-      // On récupère l'id stocké dans le token
-      if (token && session.user) {
-        session.user.id = token.id;
+      if (token?.user) {
+        session.user = token.user
       }
-      return session;
+      return session
     },
   },
-});
+})

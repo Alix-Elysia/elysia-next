@@ -1,54 +1,54 @@
-import { motion } from 'framer-motion';
+import { useState } from 'react'
 
 export default function Inscription() {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      style={{ maxWidth: '500px', margin: '60px auto', padding: '20px', textAlign: 'center' }}
-    >
-      <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Créer mon espace</h1>
-      <p style={{ marginBottom: '30px', fontSize: '1rem' }}>
-        Rejoignez Élysia et commencez à préserver vos souvenirs les plus précieux.
-      </p>
+  const [email, setEmail] = useState('')
+  const [name, setName] = useState('')
+  const [password, setPassword] = useState('')
+  const [message, setMessage] = useState('')
 
-      <form style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Votre prénom"
-          required
-          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
-        />
+  async function handleSubmit(e) {
+    e.preventDefault()
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, name, password }),
+    })
+
+    const data = await res.json()
+    if (res.ok) {
+      setMessage('Inscription réussie. Vous pouvez vous connecter !')
+    } else {
+      setMessage(data.error || 'Une erreur est survenue')
+    }
+  }
+
+  return (
+    <section style={{ maxWidth: '400px', margin: '60px auto' }}>
+      <h1>Créer un compte</h1>
+      {message && <p>{message}</p>}
+      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
         <input
           type="email"
-          name="email"
-          placeholder="Votre email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
+        />
+        <input
+          type="text"
+          placeholder="Nom"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type="password"
-          name="password"
-          placeholder="Votre mot de passe"
+          placeholder="Mot de passe"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
         />
-        <button
-          type="submit"
-          style={{
-            backgroundColor: '#6f442e',
-            color: '#fff',
-            padding: '12px 24px',
-            borderRadius: '8px',
-            border: 'none',
-            cursor: 'pointer',
-          }}
-        >
-          Créer mon espace
-        </button>
+        <button type="submit">S'inscrire</button>
       </form>
-    </motion.section>
-  );
+    </section>
+  )
 }

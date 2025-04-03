@@ -1,45 +1,60 @@
+import { motion } from 'framer-motion';
+
 export default function Contact() {
-    return (
-      <section style={{ maxWidth: '500px', margin: '60px auto', padding: '20px', textAlign: 'center' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Contactez-nous</h1>
-        <p style={{ marginBottom: '30px', fontSize: '1rem' }}>
-          Une question, un besoin, une suggestion ? Nous sommes à votre écoute.
-        </p>
-  
-        <form
-          action="https://formspree.io/f/mvgkwkwv"
-          method="POST"
-          style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}
+  return (
+    <section className="max-w-3xl mx-auto my-16 p-6 bg-[#f5f1e8] text-[#6f442e] rounded-lg shadow-lg">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        className="text-3xl font-bold text-center mb-6"
+      >
+        Contactez-nous
+      </motion.h1>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.3 }}
+        className="text-center text-lg mb-8"
+      >
+        Une question, un besoin, une suggestion ? Nous sommes à votre écoute.
+      </motion.p>
+
+      <form
+        action="https://formspree.io/f/mvgkwkwv"
+        method="POST"
+        className="flex flex-col gap-6"
+      >
+        <motion.input
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          type="email"
+          name="email"
+          placeholder="Votre email"
+          required
+          className="p-4 border border-[#cfc6b8] rounded-xl text-[#6f442e] focus:outline-none focus:ring-2 focus:ring-[#6f442e]"
+        />
+        <motion.textarea
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          name="message"
+          placeholder="Votre message"
+          rows="6"
+          required
+          className="p-4 border border-[#cfc6b8] rounded-xl text-[#6f442e] focus:outline-none focus:ring-2 focus:ring-[#6f442e]"
+        ></motion.textarea>
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.9 }}
+          type="submit"
+          className="bg-[#6f442e] text-white py-3 px-6 rounded-xl cursor-pointer hover:bg-[#5a3a25] transition duration-300"
         >
-          <input
-            type="email"
-            name="email"
-            placeholder="Votre email"
-            required
-            style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
-          />
-          <textarea
-            name="message"
-            placeholder="Votre message"
-            rows="4"
-            required
-            style={{ padding: '12px', borderRadius: '8px', border: '1px solid #cfc6b8' }}
-          ></textarea>
-          <button
-            type="submit"
-            style={{
-              backgroundColor: '#6f442e',
-              color: '#fff',
-              padding: '12px 24px',
-              borderRadius: '8px',
-              border: 'none',
-              cursor: 'pointer',
-            }}
-          >
-            Envoyer
-          </button>
-        </form>
-      </section>
-    );
-  }
-  
+          Envoyer
+        </motion.button>
+      </form>
+    </section>
+  );
+}

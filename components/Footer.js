@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer style={{ backgroundColor: '#6f442e', color: '#efede8', padding: '20px 0', textAlign: 'center' }}>
       <div>
-        <p>© 2023 ÉLYSIA</p>
+        <p>© 2025 ÉLYSIA</p>
       </div>
       <div style={{ marginTop: '10px' }}>
         <Link href="/mentions-legales">

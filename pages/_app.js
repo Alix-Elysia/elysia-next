@@ -6,9 +6,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Header />
-      <main style={{ minHeight: '80vh', padding: '20px' }}>
-        <Component {...pageProps} />
-      </main>
+      <Component {...pageProps} />
       <Footer />
     </>
   );

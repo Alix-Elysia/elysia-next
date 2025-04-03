@@ -1,36 +1,31 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import Image from 'next/image';
 
-export default function Header() {
+const Header = () => {
   return (
-    <header
-      style={{
-        position: 'sticky',
-        top: 0,
-        zIndex: 100,
-        padding: '10px 40px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        backgroundColor: '#cfc6b8',
-      }}
-    >
-      <Link href="/">
-        <Image
-          src="/logo-elysia.png"
-          alt="Logo Élysia"
-          width={100}
-          height={50}
-          priority
-        />
-      </Link>
-      <nav style={{ display: 'flex', gap: '20px', fontWeight: '500', fontSize: '0.95rem' }}>
-        <Link href="/">Accueil</Link>
-        <Link href="/a-propos">À propos</Link>
-        <Link href="/sanctuaire">Sanctuaire</Link>
-        <Link href="/inscription">Inscription</Link>
-        <Link href="/contact">Contact</Link>
-      </nav>
+    <header style={{ backgroundColor: '#efede8', padding: '20px 0' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1200px', margin: '0 auto' }}>
+        <div>
+          <Link href="/">
+            <a>
+              <Image src="/logo-elysia.png" alt="ÉLYSIA Logo" width={150} height={50} />
+            </a>
+          </Link>
+        </div>
+        <nav>
+          <Link href="/a-propos">
+            <a style={{ margin: '0 15px', color: '#6f442e' }}>À propos</a>
+          </Link>
+          <Link href="/sanctuaire">
+            <a style={{ margin: '0 15px', color: '#6f442e' }}>Sanctuaire</a>
+          </Link>
+          <Link href="/contact">
+            <a style={{ margin: '0 15px', color: '#6f442e' }}>Contact</a>
+          </Link>
+        </nav>
+      </div>
     </header>
   );
-}
+};
+
+export default Header;

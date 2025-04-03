@@ -1,18 +1,18 @@
-import React from 'react';
-
+// pages/legal/mentions-legales.js
 const MentionsLegales = () => {
-  return (
-    <div>
-      <h1>Mentions Légales</h1>
-      <p><strong>Éditeur du site :</strong> ÉLYSIA</p>
-      <p>Adresse : 123 Rue des Souvenirs, 66000 Perpignan, France</p>
-      <p>Numéro de SIREN : 123 456 789 00012</p>
-      <p>Directeur de la publication : Alix (Responsable du site)</p>
-      <p>Hébergeur : OVH, 2 rue Kellermann, 59100 Roubaix, France</p>
-      <p>Téléphone : +33 9 72 10 10 07</p>
-      <p>Le site collecte des données personnelles. Une politique de confidentialité est disponible pour expliquer le traitement des données.</p>
-    </div>
-  );
-};
-
-export default MentionsLegales;
+    return (
+      <div style={{ padding: '40px', backgroundColor: '#f5f1e8' }}>
+        <h1 style={{ color: '#6f442e' }}>Mentions Légales</h1>
+        <p><strong>Nom de l’éditeur :</strong> ÉLYSIA</p>
+        <p><strong>Adresse :</strong> Perpignan, France</p>
+        <p><strong>SIREN/SIRET :</strong> 123 456 789 00012 (Exemple fictif)</p>
+        <p><strong>Responsable de la publication :</strong> Alix</p>
+        <p><strong>Hébergeur :</strong> ÉLYSIA, 12 rue des Imaginaires, Perpignan, 66600, France</p>
+        <p><strong>Email :</strong> contact@elysia.fr</p>
+        <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
+      </div>
+    );
+  };
+  
+  export default MentionsLegales;
+  

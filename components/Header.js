@@ -57,7 +57,7 @@ export default function Header() {
             className="fixed top-0 right-0 w-4/5 max-w-sm h-screen bg-[#efede8] z-40 shadow-xl px-8 py-14"
           >
             <ul className="flex flex-col gap-6 text-[#6f442e] font-medium text-lg">
-              <li><Link href="/" onClick={closeMenu}><a>Accueil</a></Link></li>
+              <li><Link href="/" onClick={closeMenu}><a>🏠 Accueil</a></Link></li>
               <li><Link href="/a-propos" onClick={closeMenu}><a>À propos</a></Link></li>
               <li><Link href="/sanctuaire" onClick={closeMenu}><a>Sanctuaire</a></Link></li>
               <li><Link href="/gardien" onClick={closeMenu}><a>IA Le Gardien</a></Link></li>

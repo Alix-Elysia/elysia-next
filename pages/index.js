@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 
 export default function Home() {
   return (
-    <section className="text-[#6f442e] text-center py-16 px-6">
-      {/* Titre principal animé */}
+    <section className="text-[#6f442e] px-4 md:px-6 py-20 max-w-5xl mx-auto">
+      {/* Titre principal */}
       <motion.h1
-        className="text-4xl md:text-5xl font-bold mb-6 leading-snug"
+        className="text-4xl md:text-5xl font-bold text-center leading-snug mb-6"
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -16,90 +16,80 @@ export default function Home() {
 
       {/* Slogan */}
       <motion.p
-        className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed"
+        className="text-center text-lg md:text-xl font-light max-w-2xl mx-auto mb-10 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        Offrez à vos souvenirs un sanctuaire numérique. Avec Élysia, préservez les moments qui comptent pour toujours.
+        Offrez à vos souvenirs un sanctuaire numérique. Préservez les moments qui comptent pour toujours.
       </motion.p>
 
-      {/* CTA */}
+      {/* CTA principal */}
       <motion.div
+        className="flex justify-center"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.5 }}
       >
         <Link href="/inscription">
-          <a className="inline-block bg-[#6f442e] text-white text-sm md:text-base font-semibold px-6 py-3 rounded-lg shadow hover:bg-[#50321f] transition">
+          <a className="bg-[#6f442e] text-white text-sm md:text-base font-medium px-6 py-3 rounded-lg shadow hover:bg-[#50321f] transition">
             Créer mon espace
           </a>
         </Link>
       </motion.div>
 
-      {/* Le Gardien */}
-      <motion.div
-        className="mt-24 text-left"
+      {/* Gardien des Mémoires */}
+      <motion.section
+        className="mt-24"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-4">Le Gardien des Mémoires</h2>
-        <p className="text-base md:text-lg font-light leading-relaxed mb-4">
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-4">Le Gardien des Mémoires</h2>
+        <p className="text-base md:text-lg font-light leading-relaxed text-center max-w-2xl mx-auto mb-4">
           Il vous guide pour raconter votre histoire. Chaque souvenir devient un trésor préservé pour vos proches.
         </p>
-        <Link href="/gardien">
-          <a className="text-[#6f442e] font-medium underline hover:text-[#3d2b1e] transition">Découvrir Le Gardien</a>
-        </Link>
-      </motion.div>
+        <div className="text-center">
+          <Link href="/gardien">
+            <a className="text-[#6f442e] font-medium underline hover:text-[#3d2b1e] transition">
+              Découvrir Le Gardien
+            </a>
+          </Link>
+        </div>
+      </motion.section>
 
       {/* Fonctionnement */}
-      <motion.div
-        className="mt-24 text-left"
+      <motion.section
+        className="mt-28"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6">Comment ça marche ?</h2>
-        <ol className="space-y-6 text-base md:text-lg font-light leading-relaxed list-decimal list-inside">
-          <li>
-            <strong>Créez votre espace :</strong> Inscrivez-vous pour ouvrir votre sanctuaire personnel.
-          </li>
-          <li>
-            <strong>Partagez vos souvenirs :</strong> Laissez-vous guider par notre IA bienveillante.
-          </li>
-          <li>
-            <strong>Transmettez-les :</strong> Préservez-les pour ceux qui comptent.
-          </li>
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-6">Comment ça marche ?</h2>
+        <ol className="space-y-6 text-base md:text-lg font-light leading-relaxed list-decimal list-inside max-w-3xl mx-auto">
+          <li><strong>Créez votre espace :</strong> Inscrivez-vous pour ouvrir votre sanctuaire personnel.</li>
+          <li><strong>Partagez vos souvenirs :</strong> Laissez-vous guider par notre IA bienveillante.</li>
+          <li><strong>Transmettez-les :</strong> Préservez-les pour ceux qui comptent.</li>
         </ol>
-      </motion.div>
+      </motion.section>
 
       {/* Témoignages */}
-      <motion.div
-        className="mt-24"
+      <motion.section
+        className="mt-28"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl font-semibold mb-6">Ils parlent d’Élysia</h2>
-        <div className="grid md:grid-cols-3 gap-6 text-left">
+        <h2 className="text-2xl md:text-3xl font-semibold text-center mb-8">Ils parlent d’Élysia</h2>
+        <div className="grid md:grid-cols-3 gap-6">
           {[
-            {
-              nom: 'Claire D.',
-              texte: 'J’ai pu raconter ma vie à mes petits-enfants, même de loin. C’est précieux.',
-            },
-            {
-              nom: 'Paul M.',
-              texte: 'Le Gardien m’a permis de revivre mes plus beaux souvenirs en douceur.',
-            },
-            {
-              nom: 'Fatou S.',
-              texte: 'Simple et émouvant. Je me sens plus apaisée de laisser une trace.',
-            },
-          ].map((avis, i) => (
+            { nom: 'Claire D.', texte: 'J’ai pu raconter ma vie à mes petits-enfants, même de loin. C’est précieux.' },
+            { nom: 'Paul M.', texte: 'Le Gardien m’a permis de revivre mes plus beaux souvenirs en douceur.' },
+            { nom: 'Fatou S.', texte: 'Simple et émouvant. Je me sens plus apaisée de laisser une trace.' },
+          ].map((avis, index) => (
             <motion.div
-              key={i}
-              className="bg-white/60 backdrop-blur-sm p-6 rounded-lg shadow-md"
+              key={index}
+              className="bg-white/60 backdrop-blur-md p-6 rounded-lg shadow"
               whileHover={{ scale: 1.02 }}
             >
               <p className="italic mb-3">“{avis.texte}”</p>
@@ -108,13 +98,13 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Voir plus */}
-        <div className="mt-6">
+        {/* Voir plus d’avis */}
+        <div className="mt-8 text-center">
           <Link href="/temoignages">
             <a className="text-sm text-[#6f442e] underline hover:text-[#3d2b1e]">Voir plus d’avis</a>
           </Link>
         </div>
-      </motion.div>
+      </motion.section>
     </section>
   );
 }

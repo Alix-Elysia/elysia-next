@@ -5,66 +5,48 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [logoVisible, setLogoVisible] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
-    // On fait apparaître le logo en fade-in une fois que la page a scrollé de 30px
-    const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setLogoVisible(true);
-      } else {
-        setLogoVisible(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-[#efede8]/80 backdrop-blur-md border-b border-[#bca895] shadow-sm transition-all duration-300">
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-        
-        {/* Logo avec animation */}
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-[#efede8]/90 shadow-md backdrop-blur-md border-b border-[#d9c7b8]' : 'bg-transparent'}`}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        {/* Logo */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
-          animate={logoVisible ? { opacity: 1, y: 0 } : { opacity: 0.8, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
         >
           <Link href="/" onClick={closeMenu}>
             <a className="flex items-center">
-              <Image
-                src="/logo-elysia.png"
-                alt="Élysia Logo"
-                width={130}
-                height={40}
-                className="object-contain"
-              />
+              <Image src="/logo-elysia.png" alt="Élysia Logo" width={120} height={40} />
             </a>
           </Link>
         </motion.div>
 
-        {/* Menu desktop */}
-        <nav className="hidden md:flex gap-10 text-[#6f442e] text-sm font-medium tracking-wide">
-          <Link href="/"><a className="hover:text-[#2d1d14]">Accueil</a></Link>
-          <Link href="/inscription"><a className="hover:text-[#2d1d14]">Inscription</a></Link>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex gap-8 text-[#6f442e] font-medium text-sm">
+          <Link href="/"><a className="hover:text-[#2d1d14] transition">Accueil</a></Link>
+          <Link href="/inscription"><a className="hover:text-[#2d1d14] transition">Inscription</a></Link>
         </nav>
 
-        {/* Hamburger icon */}
-        <button
-          onClick={toggleMenu}
-          className="md:hidden w-8 h-8 relative focus:outline-none"
-          aria-label="Ouvrir le menu"
-        >
-          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition duration-300 ease-in-out ${menuOpen ? 'rotate-45 top-3' : 'top-1'}`} />
-          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition duration-300 ease-in-out ${menuOpen ? 'opacity-0' : 'top-3'}`} />
-          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition duration-300 ease-in-out ${menuOpen ? '-rotate-45 top-3' : 'top-5'}`} />
+        {/* Mobile burger */}
+        <button onClick={toggleMenu} className="md:hidden w-8 h-8 relative focus:outline-none" aria-label="Menu">
+          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition transform ${menuOpen ? 'rotate-45 top-3' : 'top-1'}`} />
+          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition-all ${menuOpen ? 'opacity-0' : 'top-3'}`} />
+          <span className={`absolute h-0.5 w-6 bg-[#6f442e] transition transform ${menuOpen ? '-rotate-45 top-3' : 'top-5'}`} />
         </button>
       </div>
 
-      {/* Menu Mobile */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.nav
@@ -72,9 +54,9 @@ export default function Header() {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ duration: 0.4, ease: 'easeInOut' }}
-            className="fixed top-0 right-0 w-3/4 max-w-xs h-screen bg-[#efede8] z-40 shadow-xl px-8 py-10 flex flex-col"
+            className="fixed top-0 right-0 w-4/5 max-w-sm h-screen bg-[#efede8] z-40 shadow-xl px-8 py-14"
           >
-            <ul className="space-y-6 text-[#6f442e] font-medium text-lg">
+            <ul className="flex flex-col gap-6 text-[#6f442e] font-medium text-lg">
               <li><Link href="/" onClick={closeMenu}><a>Accueil</a></Link></li>
               <li><Link href="/a-propos" onClick={closeMenu}><a>À propos</a></Link></li>
               <li><Link href="/sanctuaire" onClick={closeMenu}><a>Sanctuaire</a></Link></li>

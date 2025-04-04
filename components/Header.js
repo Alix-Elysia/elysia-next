@@ -36,13 +36,18 @@ export default function Header() {
               </Link>
             </li>
             <li>
-               <Link href="/gardien">
-                  <a className="text-[#6f442e] hover:text-[#221f20]">Gardien IA</a>
-               </Link>
+              <Link href="/gardien">
+                <a className="text-[#6f442e] hover:text-[#221f20]">IA Le gardien</a>
+              </Link>
             </li>
             <li>
               <Link href="/contact">
                 <a className="text-[#6f442e] hover:text-[#221f20]">Contact</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/login">
+                <a className="text-[#6f442e] hover:text-[#221f20]">Se connecter</a>
               </Link>
             </li>
           </ul>
@@ -51,9 +56,3 @@ export default function Header() {
     </header>
   );
 }
-<li>
-  <Link href="/login">
-    <a className="text-[#6f442e] hover:text-[#221f20]">Se connecter</a>
-  </Link>
-</li>
-
